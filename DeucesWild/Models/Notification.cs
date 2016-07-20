@@ -1,8 +1,7 @@
-﻿using DeucesWild.Models;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace GigHub.Models
+namespace DeucesWild.Models
 {
     public class Notification
     {

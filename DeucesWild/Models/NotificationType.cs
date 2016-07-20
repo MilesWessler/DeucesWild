@@ -1,4 +1,4 @@
-﻿namespace GigHub.Models
+﻿namespace DeucesWild.Models
 {
     public enum NotificationType
     {
