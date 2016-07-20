@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DeucesWild.Models
@@ -23,7 +24,7 @@ namespace DeucesWild.Models
         [Required]
         public byte GenreId { get; set; }
 
-        //public ICollection<Attendance> Attendances { get; private set; }
+        public ICollection<Attendance> Attendances { get; private set; }
 
         //public Tournament()
         //{

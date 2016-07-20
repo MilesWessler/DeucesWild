@@ -181,10 +181,19 @@
     <Compile Include="Migrations\201607200150100_CreateTournamentTable.Designer.cs">
       <DependentUpon>201607200150100_CreateTournamentTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607200156050_PopulateCategories.cs" />
+    <Compile Include="Migrations\201607200156050_PopulateCategories.Designer.cs">
+      <DependentUpon>201607200156050_PopulateCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607200216022_AddAttendances.cs" />
+    <Compile Include="Migrations\201607200216022_AddAttendances.Designer.cs">
+      <DependentUpon>201607200216022_AddAttendances.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Notification.cs" />
@@ -266,6 +275,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607200150100_CreateTournamentTable.resx">
       <DependentUpon>201607200150100_CreateTournamentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607200156050_PopulateCategories.resx">
+      <DependentUpon>201607200156050_PopulateCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607200216022_AddAttendances.resx">
+      <DependentUpon>201607200216022_AddAttendances.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
