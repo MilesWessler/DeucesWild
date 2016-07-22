@@ -194,6 +194,10 @@
     <Compile Include="Migrations\201607200306592_AddFollowings.Designer.cs">
       <DependentUpon>201607200306592_AddFollowings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607222106044_EagerLoadTournament.cs" />
+    <Compile Include="Migrations\201607222106044_EagerLoadTournament.Designer.cs">
+      <DependentUpon>201607222106044_EagerLoadTournament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -297,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607200306592_AddFollowings.resx">
       <DependentUpon>201607200306592_AddFollowings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607222106044_EagerLoadTournament.resx">
+      <DependentUpon>201607222106044_EagerLoadTournament.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
