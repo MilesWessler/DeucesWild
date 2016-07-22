@@ -3,8 +3,6 @@ using System.Data.Entity;
 
 namespace DeucesWild.Models
 {
-
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Tournament> Tournaments { get; set; }

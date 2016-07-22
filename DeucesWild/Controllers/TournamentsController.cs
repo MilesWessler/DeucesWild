@@ -92,11 +92,11 @@ namespace DeucesWild.Controllers
             }
 
             var userId = User.Identity.GetUserId();
-            var gig = _context.Tournaments
+            var tournament = _context.Tournaments
                 .Include(g => g.Attendances.Select(a => a.Attendee))
                 .Single(g => g.Id == viewModel.Id && g.UserId == userId);
 
-            gig.Modify(viewModel.GetDateTime(), viewModel.Casino, viewModel.Category);
+            tournament.Modify(viewModel.GetDateTime(), viewModel.Casino, viewModel.Category);
 
             _context.SaveChanges();
 

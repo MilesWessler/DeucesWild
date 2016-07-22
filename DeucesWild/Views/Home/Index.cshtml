@@ -6,26 +6,26 @@
 
 
 
-<ul class="gigs">
-    @foreach (var gig in Model)
+<ul class="tournaments">
+    @foreach (var tournament in Model)
     {
         <li>
             <div class="date">
                 <div class="month">
-                    @gig.DateTime.ToString("MMM")
+                    @tournament.DateTime.ToString("MMM")
                 </div>
                 <div class="day">
-                    @gig.DateTime.ToString("d ")
+                    @tournament.DateTime.ToString("d ")
                 </div>
             </div>
             <div class="details">
-                <span class="artist">
-                    @gig.User.Name <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@gig.UserId">Follow</button>
+                <span class="user">
+                    @tournament.User.Name <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@tournament.UserId">Follow</button>
                 </span>
                 <span class="genre">
-                    @gig.Category.Name
+                    @tournament.Category.Name
                 </span>
-                <button data-gig-id="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going ?</button>
+                <button data-tournament-id="@tournament.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going ?</button>
             </div>
         </li>
     }
@@ -35,7 +35,7 @@
         $(document).ready(function () {
             $(".js-toggle-attendance").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
+                $.post("/api/attendances", { tournamentId: button.attr("data-tournament-id") })
                     .done(function () {
                         button.removeClass("btn-default")
                             .addClass("btn-info")
