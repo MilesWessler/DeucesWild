@@ -1,0 +1,84 @@
+﻿@model DeucesWild.ViewModels.TournamentsViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+<h1>@Model.Heading</h1>
+@using (Html.BeginForm("Search", "Tournaments"))
+{
+    <div class="form-group">
+        <div id="searchTournaments" class="input-group">
+            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by Casino, Genre or Location..." })
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>            
+        </div>
+    </div>
+}
+<ul class="tournaments voffset4">
+    @foreach (var tournament in Model.UpcomingTournaments)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @tournament.DateTime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @tournament.DateTime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <span class="user">
+                    @tournament.User.Name
+                    
+                    @if (tournament.IsCanceled)
+                    {
+                        <span class="label label-warning">Canceled</span>
+                    }
+                    
+                    @if (Model.ShowActions)
+                    {
+                        <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@tournament.User">Follow</button>
+                    }
+                </span>
+                <span class="category">
+                    @tournament.Category.Name
+                </span>
+                @if (Model.ShowActions && !tournament.IsCanceled)
+                {
+                    <button data-tournament-id="@tournament.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
+                }
+            </div>
+        </li>
+    }
+</ul>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".js-toggle-attendance").click(function(e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { gigId: button.attr("data-tournament-id") })
+                    .done(function() {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Going");
+                    })
+                    .fail(function() {
+                        alert("Something failed!");
+                    });
+            });
+
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button.text("Following");
+                    })
+                    .fail(function () {
+                        alert("Something failed");
+                    });
+            });
+        });
+    </script>
+}

@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Upcoming Gigs</h2>
-<ul class="gigs voffset4">
+<h2>My Upcoming Tournaments</h2>
+<ul class="tournaments voffset4">
     @foreach (var tournament in Model)
     {
         <li>
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="details">
-                <span class="artist">
+                <span class="user">
                     @tournament.Casino
                 </span>
                 <span class="genre">
@@ -28,7 +28,7 @@
                     <a href="@Url.Action("Edit", "Tournaments", new { id = tournament.Id })">
                         Edit
                     </a> |
-                    <a href="#" class="js-cancel-gig" data-gig-id="@tournament.Id">
+                    <a href="#" class="js-cancel-tournament" data-tournament-id="@tournament.Id">
                         Cancel
                     </a>
                 </div>
@@ -40,7 +40,7 @@
 {
     <script>
         $(document).ready(function () {
-            $(".js-cancel-gig").click(function (e) {
+            $(".js-cancel-tournament").click(function (e) {
                 var link = $(e.target);
 
                 bootbox.dialog({
@@ -59,7 +59,7 @@
                             className: "btn-danger",
                             callback: function () {
                                 $.ajax({
-                                    url: "/api/gigs/" + link.attr("data-gig-id"),
+                                    url: "/api/tournaments/" + link.attr("data-tournament-id"),
                                     method: "DELETE"
                                 })
                                 .done(function () {

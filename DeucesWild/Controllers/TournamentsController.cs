@@ -18,6 +18,28 @@ namespace DeucesWild.Controllers
         }
 
         [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var tournaments = _context.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Tournament)
+                .Include(g => g.User)
+                .Include(g => g.Category)
+                .ToList();
+
+            var viewModel = new TournamentsViewModel()
+            {
+                UpcomingTournaments = tournaments,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Tournaments I'm Attending"
+            };
+
+            return View("Tournaments", viewModel);
+        }
+
+        [Authorize]
         public ActionResult Mine()
         {
             var userId = User.Identity.GetUserId();
@@ -79,6 +101,32 @@ namespace DeucesWild.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Mine", "Tournaments");
+        }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var tournament = _context.Tournaments.Single(g => g.Id == id && g.UserId == userId);
+
+            var viewModel = new TournamentFormViewModel
+            {
+                Heading = "Edit a Tournament",
+                Id = tournament.Id,
+                Categories = _context.Categories.ToList(),
+                Date = tournament.DateTime.ToString("d MMM yyyy"),
+                Time = tournament.DateTime.ToString("HH:mm"),
+                Category = tournament.CategoryId,
+                Casino = tournament.Casino
+            };
+
+            return View("TournamentForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Search(TournamentsViewModel viewModel)
+        {
+            return RedirectToAction("Index", "Home", new { query = viewModel.SearchTerm });
         }
     }
 }
