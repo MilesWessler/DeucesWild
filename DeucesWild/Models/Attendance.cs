@@ -10,7 +10,7 @@ namespace DeucesWild.Models
 
         [Key]
         [Column(Order = 1)]
-        public int GigId { get; set; }
+        public int TournamentId { get; set; }
 
         [Key]
         [Column(Order = 2)]

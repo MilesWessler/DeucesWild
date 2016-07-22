@@ -13,7 +13,7 @@ namespace DeucesWild.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201607200222095_AddFollowings"; }
+            get { return "201607200306592_AddFollowings"; }
         }
         
         string IMigrationMetadata.Source

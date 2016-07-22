@@ -29,22 +29,22 @@ namespace DeucesWild.Models
             DateTime = DateTime.Now;
         }
 
-        public static Notification GigCreated(Tournament gig)
+        public static Notification TournamentCreated(Tournament tournament)
         {
-            return new Notification(NotificationType.GigCreated, gig);
+            return new Notification(NotificationType.Created, tournament);
         }
-        public static Notification GigUpdated(Tournament newGig, DateTime originalDateTime, string originalVenue)
+        public static Notification TournamentUpdated(Tournament newTournament, DateTime originalDateTime, string originalVenue)
         {
-            var notification = new Notification(NotificationType.GigUpdated, newGig);
+            var notification = new Notification(NotificationType.Updated, newTournament);
             notification.OriginalDateTime = originalDateTime;
             notification.OriginalVenue = originalVenue;
 
             return notification;
         }
 
-        public static Notification GigCanceled(Tournament gig)
+        public static Notification TournamentCanceled(Tournament tournament)
         {
-            return new Notification(NotificationType.GigCanceled, gig);
+            return new Notification(NotificationType.Canceled, tournament);
         }
     }
 }
