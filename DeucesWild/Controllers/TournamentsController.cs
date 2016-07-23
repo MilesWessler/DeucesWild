@@ -54,6 +54,17 @@ namespace DeucesWild.Controllers
             return View(tournaments);
         }
 
+        [Authorize]
+        public ActionResult Create()
+        {
+            var viewModel = new TournamentFormViewModel()
+            {
+                Categories = _context.Categories.ToList(),
+                Heading = "Add a Gig"
+            };
+
+            return View("TournamentForm", viewModel);
+        }
 
         [Authorize]
         [HttpPost]

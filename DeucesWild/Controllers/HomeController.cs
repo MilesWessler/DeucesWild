@@ -1,4 +1,5 @@
 ﻿using DeucesWild.Models;
+using DeucesWild.ViewModels;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -15,14 +16,31 @@ namespace DeucesWild.Controllers
             _context = new ApplicationDbContext();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string query = null)
         {
-            //Include used to eagerload
-            var upcomingTournaments = _context.Tournaments.Include(g => g.User)
+            var upcomingTournaments = _context.Tournaments
+                .Include(g => g.User)
                 .Include(g => g.Category)
                 .Where(g => g.DateTime > DateTime.Now && !g.IsCanceled);
 
-            return View(upcomingTournaments);
+            if (!String.IsNullOrWhiteSpace(query))
+            {
+                upcomingTournaments = upcomingTournaments
+                    .Where(g =>
+                            g.User.Name.Contains(query) ||
+                            g.Category.Name.Contains(query) ||
+                            g.Casino.Contains(query));
+            }
+
+            var viewModel = new TournamentsViewModel
+            {
+                UpcomingTournaments = upcomingTournaments,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Upcoming Gigs",
+                SearchTerm = query
+            };
+
+            return View("Tournaments", viewModel);
         }
     }
 }
