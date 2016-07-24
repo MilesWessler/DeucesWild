@@ -13,7 +13,7 @@ namespace DeucesWild.ViewModels
         public int Id { get; set; }
 
         [Required]
-        public string Casino { get; set; }
+        public string Venue { get; set; }
 
         [Required]
         [FutureDate]

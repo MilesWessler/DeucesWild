@@ -1,4 +1,5 @@
-﻿using DeucesWild.Dtos;
+﻿using AutoMapper;
+using DeucesWild.Dtos;
 using DeucesWild.Models;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
@@ -26,27 +27,14 @@ namespace DeucesWild.Controllers.Api
             var notifications = _context.UserNotifications
                 .Where(un => un.UserId == userId && !un.IsRead)
                 .Select(un => un.Notification)
-                .Include(n => n.Tournament.User);
+                .Include(n => n.Tournament.Member)
+                .ToList();
 
-            return notifications.Select(n => new NotificationDto()
-            {
-                DateTime = n.DateTime,
-                TournamentDto = new TournamentDto
-                {
-                    User = new UserDto
-                    {
-                        Id = n.Tournament.User.Id,
-                        Name = n.Tournament.User.Name
-                    },
-                    DateTime = n.Tournament.DateTime,
-                    Id = n.Tournament.Id,
-                    IsCanceled = n.Tournament.IsCanceled,
-                    Casino = n.Tournament.Casino
-                },
-                OriginalDateTime = n.OriginalDateTime,
-                OriginalVenue = n.OriginalVenue,
-                Type = n.Type
-            });
+            Mapper.CreateMap<ApplicationUser, UserDto>();
+            Mapper.CreateMap<Tournament, TournamentDto>();
+            Mapper.CreateMap<Notification, NotificationDto>();
+
+            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
 
         [HttpPost]

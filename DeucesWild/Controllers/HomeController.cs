@@ -19,7 +19,7 @@ namespace DeucesWild.Controllers
         public ActionResult Index(string query = null)
         {
             var upcomingTournaments = _context.Tournaments
-                .Include(g => g.User)
+                .Include(g => g.Member)
                 .Include(g => g.Category)
                 .Where(g => g.DateTime > DateTime.Now && !g.IsCanceled);
 
@@ -27,16 +27,16 @@ namespace DeucesWild.Controllers
             {
                 upcomingTournaments = upcomingTournaments
                     .Where(g =>
-                            g.User.Name.Contains(query) ||
+                            g.Member.Name.Contains(query) ||
                             g.Category.Name.Contains(query) ||
-                            g.Casino.Contains(query));
+                            g.Venue.Contains(query));
             }
 
             var viewModel = new TournamentsViewModel
             {
                 UpcomingTournaments = upcomingTournaments,
                 ShowActions = User.Identity.IsAuthenticated,
-                Heading = "Upcoming Gigs",
+                Heading = "Upcoming Tournaments",
                 SearchTerm = query
             };
 

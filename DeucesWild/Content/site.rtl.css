@@ -152,11 +152,11 @@ h6,
   top: 0;
   right: 70px;
 }
-.tournaments > li .details .user {
+.tournaments > li .details .member {
   font-weight: bold;
   display: block;
 }
-.tournaments > li .details .category {
+.tournaments > li .details .genre {
   font-size: 15px;
 }
 .tournaments > li .actions {

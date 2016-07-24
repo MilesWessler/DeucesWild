@@ -152,7 +152,7 @@ h6,
   top: 0;
   left: 70px;
 }
-.tournaments > li .details .user {
+.tournaments > li .details .member {
   font-weight: bold;
   display: block;
 }

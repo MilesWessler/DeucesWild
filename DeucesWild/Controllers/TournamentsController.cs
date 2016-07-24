@@ -25,7 +25,7 @@ namespace DeucesWild.Controllers
             var tournaments = _context.Attendances
                 .Where(a => a.AttendeeId == userId)
                 .Select(a => a.Tournament)
-                .Include(g => g.User)
+                .Include(g => g.Member)
                 .Include(g => g.Category)
                 .ToList();
 
@@ -45,7 +45,7 @@ namespace DeucesWild.Controllers
             var userId = User.Identity.GetUserId();
             var tournaments = _context.Tournaments
                 .Where(g =>
-                    g.UserId == userId &&
+                    g.MemberId == userId &&
                     g.DateTime > DateTime.Now &&
                     !g.IsCanceled)
                 .Include(g => g.Category)
@@ -60,7 +60,7 @@ namespace DeucesWild.Controllers
             var viewModel = new TournamentFormViewModel()
             {
                 Categories = _context.Categories.ToList(),
-                Heading = "Add a Gig"
+                Heading = "Add a tournament"
             };
 
             return View("TournamentForm", viewModel);
@@ -79,10 +79,10 @@ namespace DeucesWild.Controllers
 
             var tournament = new Tournament
             {
-                UserId = User.Identity.GetUserId(),
+                MemberId = User.Identity.GetUserId(),
                 DateTime = viewModel.GetDateTime(),
                 CategoryId = viewModel.Category,
-                Casino = viewModel.Casino
+                Venue = viewModel.Venue
             };
 
             _context.Tournaments.Add(tournament);
@@ -105,9 +105,9 @@ namespace DeucesWild.Controllers
             var userId = User.Identity.GetUserId();
             var tournament = _context.Tournaments
                 .Include(g => g.Attendances.Select(a => a.Attendee))
-                .Single(g => g.Id == viewModel.Id && g.UserId == userId);
+                .Single(g => g.Id == viewModel.Id && g.MemberId == userId);
 
-            tournament.Modify(viewModel.GetDateTime(), viewModel.Casino, viewModel.Category);
+            tournament.Modify(viewModel.GetDateTime(), viewModel.Venue, viewModel.Category);
 
             _context.SaveChanges();
 
@@ -118,7 +118,7 @@ namespace DeucesWild.Controllers
         public ActionResult Edit(int id)
         {
             var userId = User.Identity.GetUserId();
-            var tournament = _context.Tournaments.Single(g => g.Id == id && g.UserId == userId);
+            var tournament = _context.Tournaments.Single(g => g.Id == id && g.MemberId == userId);
 
             var viewModel = new TournamentFormViewModel
             {
@@ -128,7 +128,7 @@ namespace DeucesWild.Controllers
                 Date = tournament.DateTime.ToString("d MMM yyyy"),
                 Time = tournament.DateTime.ToString("HH:mm"),
                 Category = tournament.CategoryId,
-                Casino = tournament.Casino
+                Venue = tournament.Venue
             };
 
             return View("TournamentForm", viewModel);

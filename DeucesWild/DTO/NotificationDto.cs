@@ -9,6 +9,6 @@ namespace DeucesWild.Dtos
         public NotificationType Type { get; set; }
         public DateTime? OriginalDateTime { get; set; }
         public string OriginalVenue { get; set; }
-        public TournamentDto TournamentDto { get; set; }
+        public TournamentDto Tournament { get; set; }
     }
 }

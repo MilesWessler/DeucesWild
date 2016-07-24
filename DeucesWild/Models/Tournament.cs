@@ -11,16 +11,16 @@ namespace DeucesWild.Models
         public int Id { get; set; }
         public bool IsCanceled { get; private set; }
 
-        public ApplicationUser User { get; set; }
+        public ApplicationUser Member { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public string MemberId { get; set; }
 
         public DateTime DateTime { get; set; }
 
         [Required]
         [StringLength(255)]
-        public string Casino { get; set; }
+        public string Venue { get; set; }
 
         public Category Category { get; set; }
 
@@ -49,13 +49,13 @@ namespace DeucesWild.Models
 
         }
 
-        public void Modify(DateTime dateTime, string venue, byte genre)
+        public void Modify(DateTime dateTime, string venue, byte category)
         {
-            var notification = Notification.TournamentUpdated(this, DateTime, Casino);
+            var notification = Notification.TournamentUpdated(this, DateTime, Venue);
 
-            Casino = venue;
+            Venue = venue;
             DateTime = dateTime;
-            CategoryId = genre;
+            CategoryId = category;
 
             foreach (var attendee in Attendances.Select(a => a.Attendee))
             {

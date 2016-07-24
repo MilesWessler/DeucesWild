@@ -20,9 +20,10 @@ namespace DeucesWild.Controllers.Api
         public IHttpActionResult Cancel(int id)
         {
             var userId = User.Identity.GetUserId();
+
             var tournament = _context.Tournaments
                 .Include(g => g.Attendances.Select(a => a.Attendee))
-                .Single(g => g.Id == id && g.UserId == userId);
+                .Single(g => g.Id == id && g.MemberId == userId);
 
             if (tournament.IsCanceled)
                 return NotFound();

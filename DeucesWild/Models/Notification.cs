@@ -5,7 +5,7 @@ namespace DeucesWild.Models
 {
     public class Notification
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public DateTime DateTime { get; private set; }
         public NotificationType Type { get; private set; }
         public DateTime? OriginalDateTime { get; private set; }

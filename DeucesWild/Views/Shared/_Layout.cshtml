@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Deuces Wild", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("GigHub", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -41,32 +41,32 @@
     <script type="text/x-template" id="notifications-template">
         <ul class="notifications">
             <%
-            _.each(notifications, function(notification){
-            if (notification.type == 1) { %>
-            <li><span class="highlight"><%= notification.tournament.user.name %></span> has canceled the tournament at <%= notification.tournament.casino %> at <%= moment(notification.tournament.dateTime).format("D MMM HH:mm") %>.</li>
-            <% }
+                _.each(notifications, function(notification){
+                    if (notification.type == 1) { %>
+                        <li><span class="highlight"><%= notification.tournament.member.name %></span> has canceled the tournament at <%= notification.tournament.venue %> at <%= moment(notification.tournament.dateTime).format("D MMM HH:mm") %>.</li>
+                    <% } 
+                        
+                    else if (notification.type == 2) {
+                        var changes = [],
+                            originalValues = [],
+                            newValues = [];
 
-            else if (notification.type == 2) {
-            var changes = [],
-            originalValues = [],
-            newValues = [];
-
-            if (notification.originalVenue != notification.tournament.casino) {
-            changes.push('casino');
-            originalValues.push(notification.originalVenue);
-            newValues.push(notification.tournament.venue);
-            }
-
-            if (notification.originalDateTime != notification.tournament.dateTime) {
-            changes.push('date/time');
-            originalValues.push(moment(notification.originalDateTime).format("D MMM HH:mm"));
-            newValues.push(moment(notification.tournament.dateTime).format("D MMM HH:mm"));
-            }
-
-            %>
-            <li><span class="highlight"><%= notification.tournament.user.name %></span> has changed the <%= changes.join(' and ') %> of the tournament from <%= originalValues.join('/') %> to <%= newValues.join('/') %></li>
-            <%
-            }
+                        if (notification.originalVenue != notification.tournament.venue) {
+                            changes.push('venue');
+                            originalValues.push(notification.originalVenue);
+                            newValues.push(notification.tournament.venue);
+                        }
+                    
+                        if (notification.originalDateTime != notification.tournament.dateTime) {
+                            changes.push('date/time');
+                            originalValues.push(moment(notification.originalDateTime).format("D MMM HH:mm"));
+                            newValues.push(moment(notification.tournament.dateTime).format("D MMM HH:mm"));
+                        }
+                     
+                    %>
+                        <li><span class="highlight"><%= notification.tournament.member.name %></span> has changed the <%= changes.join(' and ') %> of the tournament from <%= originalValues.join('/') %> to <%= newValues.join('/') %></li>
+                <%
+                }
             })
             %>
         </ul>
@@ -106,4 +106,3 @@
     </script>
 </body>
 </html>
-

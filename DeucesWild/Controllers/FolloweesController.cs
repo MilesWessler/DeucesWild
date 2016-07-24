@@ -17,12 +17,12 @@ namespace DeucesWild.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var artists = _context.Followings
+            var member = _context.Followings
                 .Where(f => f.FollowerId == userId)
                 .Select(f => f.Followee)
                 .ToList();
 
-            return View(artists);
+            return View(member);
         }
     }
 }

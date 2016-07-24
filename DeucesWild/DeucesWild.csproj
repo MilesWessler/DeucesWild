@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -198,29 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607200148215_Initial.cs" />
-    <Compile Include="Migrations\201607200148215_Initial.Designer.cs">
-      <DependentUpon>201607200148215_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607200150100_CreateTournamentTable.cs" />
-    <Compile Include="Migrations\201607200150100_CreateTournamentTable.Designer.cs">
-      <DependentUpon>201607200150100_CreateTournamentTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607200156050_PopulateCategories.cs" />
-    <Compile Include="Migrations\201607200156050_PopulateCategories.Designer.cs">
-      <DependentUpon>201607200156050_PopulateCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607200216022_AddAttendances.cs" />
-    <Compile Include="Migrations\201607200216022_AddAttendances.Designer.cs">
-      <DependentUpon>201607200216022_AddAttendances.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607200306592_AddFollowings.cs" />
-    <Compile Include="Migrations\201607200306592_AddFollowings.Designer.cs">
-      <DependentUpon>201607200306592_AddFollowings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607222106044_EagerLoadTournament.cs" />
-    <Compile Include="Migrations\201607222106044_EagerLoadTournament.Designer.cs">
-      <DependentUpon>201607222106044_EagerLoadTournament.cs</DependentUpon>
+    <Compile Include="Migrations\201607242144551_Initial.cs" />
+    <Compile Include="Migrations\201607242144551_Initial.Designer.cs">
+      <DependentUpon>201607242144551_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -247,6 +231,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\site.css" />
+    <Content Include="Content\site.min.css" />
     <Content Include="Content\site.rtl.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -269,7 +254,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\underscore-min.js" />
-    <Content Include="Scripts\_references.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -280,7 +265,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -301,10 +285,11 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Tournaments\TournamentForm.cshtml" />
     <Content Include="Views\Tournaments\Mine.cshtml" />
     <Content Include="Views\Shared\Tournaments.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,23 +303,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607200148215_Initial.resx">
-      <DependentUpon>201607200148215_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607200150100_CreateTournamentTable.resx">
-      <DependentUpon>201607200150100_CreateTournamentTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607200156050_PopulateCategories.resx">
-      <DependentUpon>201607200156050_PopulateCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607200216022_AddAttendances.resx">
-      <DependentUpon>201607200216022_AddAttendances.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607200306592_AddFollowings.resx">
-      <DependentUpon>201607200306592_AddFollowings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607222106044_EagerLoadTournament.resx">
-      <DependentUpon>201607222106044_EagerLoadTournament.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607242144551_Initial.resx">
+      <DependentUpon>201607242144551_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
