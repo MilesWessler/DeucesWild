@@ -25,6 +25,9 @@ namespace DeucesWild.ViewModels
 
         [Required]
         public byte Category { get; set; }
+
+        public Location Location { get; set; }
+        public double EntryFee { get; set; }
         public IEnumerable<Category> Categories { get; set; }
         public string Heading { get; set; }
 

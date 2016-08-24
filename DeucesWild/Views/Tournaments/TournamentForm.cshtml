@@ -5,32 +5,95 @@
 }
 
 <h2>@Model.Heading</h2>
-@using (Html.BeginForm(Model.Action, "Tournaments"))
+@using (Html.BeginForm(Model.Action, "Tournaments", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Id)
-    <div class="form-group">
-        @Html.LabelFor(m => m.Venue)
-        @Html.TextBoxFor(m => m.Venue, new { @class = "form-control", autofocus = "autofocus" })
-        @Html.ValidationMessageFor(m => m.Venue)
+
+
+    <div class="col-md-10 form-padding ">
+        <hr />
+        <h2>Location</h2>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Date)
-        @Html.TextBoxFor(m => m.Date, new { @class = "form-control", placeholder = "eg 1 Jan 2015" })
-        @Html.ValidationMessageFor(m => m.Date)
+        <div class="col-md-3">
+            <label>Venue</label>
+            @Html.TextBoxFor(m => m.Venue, new { @class = "form-control", @autofocus = "autofocus" })
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Time)
-        @Html.TextBoxFor(m => m.Time, new { @class = "form-control", placeholder = "eg 20:00" })
-        @Html.ValidationMessageFor(m => m.Time)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Category)
-        @Html.DropDownListFor(m => m.Category, new SelectList(Model.Categories, "Id", "Name"), "", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Category)
-    </div>
-    <button type="submit" class="btn btn-primary btn-lg">Save</button>
+        <div class="form-group">
+            <div class="col-md-2 form-padding">
+                <label>State</label>
+                @Html.TextBoxFor(m => m.Location.State, new { @class = "form-control", @autofocus = "autofocus" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-pull-1 col-md-4 col-md-offset-1  form-padding">
+                <label>City</label>
+                @Html.TextBoxFor(m => m.Location.City, new { @class = "form-control", @autofocus = "autofocus" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3 form-padding">
+                <label>Zip Code</label>
+                @Html.TextBoxFor(m => m.Location.ZipCode, new { @class = "form-control", @autofocus = "autofocus" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 form-padding">
+                <label>Street</label>
+                @Html.TextBoxFor(m => m.Location.Street, new { @class = "form-control", @autofocus = "autofocus" })
+            </div>
+        </div>
+
+        <div class="col-lg-10 form-padding">
+            <hr />
+            <h2>Details</h2>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3 form-padding">
+                <label>Date</label>
+                @Html.TextBoxFor(m => m.Date, new { @class = "form-control", @autofocus = "autofocus", @placeholder = "eg 1 Jan 2015" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 form-padding">
+                <label>Time</label>
+                @Html.TextBoxFor(m => m.Time, new { @class = "form-control", @autofocus = "autofocus", @placeholder = "eg 20:00" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 form-padding">
+                <label>Entry Fee</label>
+                @Html.TextBoxFor(m => m.EntryFee, new { @class = "form-control", @autofocus = "autofocus" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5 form-padding">
+                <label>Game Type</label>
+                @Html.DropDownListFor(m => m.Category, new SelectList(Model.Categories, "Id", "Name"), "", new { @class = "form-control" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-2 form-padding myButton">
+                <label class="btn btn-primary btn-lg">
+                    <input type="file" id="file" name="file" class="hidden" />
+                    Upload Image
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <button type="submit" class="btn btn-primary btn-lg">Save</button>
+            </div>
+        </div>
+
 }
 @section scripts
 {

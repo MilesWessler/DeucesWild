@@ -1,16 +1,52 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@ViewBag.Title - Deuces Wild</title>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header class="navbar navbar-bright navbar-fixed-top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">Home</a>
+            </div>
+            <nav class="collapse navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li>
+                 @Html.ActionLink("Add a Tournament", "Create", "Tournaments")
+                    </li>
+                    <li>
+                        <a href="#">Category</a>
+                    </li>
+                    <li>
+                        <a href="#">Category</a>
+                    </li>
+                    <li>
+                        <a href="#">Category</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-right navbar-nav">
+                    @Html.Partial("_LoginPartial")
+                </ul>
+                
+            </nav>
+        </div>
+    </header>
+@*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("GigHub", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Deuces Wild", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -27,18 +63,18 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
+    </div>*@
+<div class="container body-content">
+    @RenderBody()
+    @*<hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        </footer>*@
+</div>
 
-    @Scripts.Render("~/bundles/lib")
-    @RenderSection("scripts", required: false)
-    <script type="text/x-template" id="notifications-template">
+@Scripts.Render("~/bundles/lib")
+@RenderSection("scripts", required: false)
+<script type="text/x-template" id="notifications-template">
         <ul class="notifications">
             <%
                 _.each(notifications, function(notification){
@@ -71,38 +107,38 @@
             %>
         </ul>
     </script>
-    <script>
-        $(document).ready(function () {
-            $.getJSON("/api/notifications", function (notifications) {
-                if (notifications.length == 0)
-                    return;
+<script>
+    $(document).ready(function() {
+        $.getJSON("/api/notifications", function(notifications) {
+            if (notifications.length == 0)
+                return;
 
-                $(".js-notifications-count")
-                    .text(notifications.length)
-                    .removeClass("hide")
-                    .addClass("animated bounceInDown");
+            $(".js-notifications-count")
+                .text(notifications.length)
+                .removeClass("hide")
+                .addClass("animated bounceInDown");
 
-                $(".notifications").popover({
-                    html: true,
-                    title: "Notifications",
-                    content: function () {
-                        var compiled = _.template($("#notifications-template").html());
-                        return compiled({ notifications: notifications });
-                    },
-                    placement: "bottom",
-                    template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+            $(".notifications").popover({
+                html: true,
+                title: "Notifications",
+                content: function() {
+                    var compiled = _.template($("#notifications-template").html());
+                    return compiled({ notifications: notifications });
+                },
+                placement: "bottom",
+                template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
 
-                }).on("shown.bs.popover", function() {
-                    $.post("/api/notifications/markAsRead")
-                        .done(function () {
-                            $(".js-notifications-count")
-                                .text("")
-                                .addClass("hide");
-                        });
-                });
-
+            }).on("shown.bs.popover", function() {
+                $.post("/api/notifications/markAsRead")
+                    .done(function() {
+                        $(".js-notifications-count")
+                            .text("")
+                            .addClass("hide");
+                    });
             });
+
         });
-    </script>
+    });
+</script>
 </body>
 </html>

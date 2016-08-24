@@ -4,8 +4,8 @@
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {
-  padding-right: 15px;
   padding-left: 15px;
+  padding-right: 15px;
 }
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -47,8 +47,8 @@ span.field-validation-error {
   -webkit-box-shadow: none;
 }
 .navbar-inverse {
-  background-color: #ff4342;
-  border-color: #ff4342;
+  background-color: #141414;
+  border-color: #141414;
 }
 .navbar-inverse .navbar-nav > li > a {
   color: #fff;
@@ -62,13 +62,13 @@ span.field-validation-error {
 .navbar-inverse .notifications .badge {
   position: absolute;
   top: 8px;
-  left: -1px;
-  background: #a80a0a;
+  right: -1px;
+  background: #2980b9;
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: rgba(205, 40, 39, 0.55);
+  background-color: #CC0000;
 }
 .dropdown-menu {
   box-shadow: none;
@@ -81,7 +81,7 @@ span.field-validation-error {
 .navbar-brand {
   font-weight: 700;
 }
-body {
+* html body {
   font-size: 17px;
 }
 body,
@@ -102,6 +102,9 @@ h6,
 .form-group {
   margin-bottom: 20px;
 }
+.form-padding {
+	margin-bottom: 50px;
+}
 .form-control {
   font-size: 17px;
   height: 44px;
@@ -114,10 +117,9 @@ h6,
   -webkit-transition: none;
 }
 .btn {
-  /*font-size: 17px;
-    padding: 7px 20px;*/
-  -ms-border-radius: 9px;
-  border-radius: 9px;
+   margin-right: 4%;
+  border-color: #2980b9;
+  color: #2980b9;
 }
 /* Page-level styles */
 .tournaments {
@@ -150,13 +152,13 @@ h6,
 .tournaments > li .details {
   position: absolute;
   top: 0;
-  right: 70px;
+  left: 70px;
 }
 .tournaments > li .details .member {
   font-weight: bold;
   display: block;
 }
-.tournaments > li .details .genre {
+.tournaments > li .details .category {
   font-size: 15px;
 }
 .tournaments > li .actions {
@@ -171,7 +173,7 @@ h6,
 }
 .popover-notifications ul.notifications {
   list-style: none;
-  padding-right: 0;
+  padding-left: 0;
 }
 .popover-notifications ul.notifications > li {
   border-bottom: 1px solid #ddd;
@@ -189,4 +191,117 @@ h6,
 #searchTournaments input {
   max-width: none;
 }
-/*# sourceMappingURL=site.rtl.css.map */
+/*Button*/
+.myButton {
+	padding-top: 25px;
+}
+/*Image*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);
+.snip1336 {
+  font-family: 'Roboto', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+  line-height: 1.4em;
+  background-color: #141414;
+	
+}
+.snip1336 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.snip1336 img {
+  max-width: 100%;
+  vertical-align: top;
+  opacity: 0.85;
+}
+.snip1336 figcaption {
+  width: 100%;
+  background-color: #141414;
+  padding: 25px;
+  position: relative;
+}
+.snip1336 figcaption:before {
+  position: absolute;
+  content: '';
+  bottom: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 55px 0 0 400px;
+  border-color: transparent transparent transparent #141414;
+}
+.snip1336 figcaption a {
+  padding: 5px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  margin: 10px 0;
+  display: inline-block;
+  opacity: 0.65;
+  width: 47%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.snip1336 figcaption a:hover {
+  opacity: 1;
+}
+.snip1336 .profile {
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left: 25px;
+  z-index: 1;
+  max-width: 90px;
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.snip1336 .follow {
+  margin-right: 4%;
+  border-color: #2980b9;
+  color: #2980b9;
+}
+.snip1336 h2 {
+  margin: 0 0 5px;
+  margin-bottom: 40px;
+  margin-top: -30px;
+  font-weight: 300;
+}
+.snip1336 h2 span {
+  display: block;
+  font-size: 0.5em;
+  color: #2980b9;
+}
+.snip1336 p {
+  margin: 0 0 10px;
+ letter-spacing: 1px;
+ opacity: 0.8;
+ font-size: 9px;
+}
+.top-buffer {
+	margin-top: 40px;
+}
+
+/*.remove-list {
+	list-style: none;
+}*/
+/* Demo purposes only */
+/*body {
+  background-color: #212121;
+}*/
+
+
+
+

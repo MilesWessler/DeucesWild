@@ -1,0 +1,435 @@
+/* override bootstrap styles */
+@import url('http://fonts.googleapis.com/css?family=Oswald:300,400:latin,latin-ext');
+/*form {
+	margin-left: -7%;
+	margin-right: -7%;
+	
+   
+}*/
+.navbar-form input, .form-inline input {
+	width: auto;
+}
+
+body {
+	padding-top: 50px;
+	color: #646464;
+	background-color: #efefef;
+}
+
+h1, h2, h3, h4 .highlight, .navbar a, #masthead h4 {
+	font-family: 'Oswald',arial narrow,sans-serif;
+}
+li {
+	padding-bottom: 20px
+}
+small, .small {
+	font-size: 85%;
+	font-size: 14px;
+	margin-left: -150px;
+	color: black;
+}
+.venue-header {
+	color: purple;
+	text-align: center;
+	padding-bottom: 20px
+}
+.tournament-header {
+	color: black;
+        margin-bottom: -10px;
+		 text-align: center;
+}
+ul
+{
+list-style-type: none;
+}
+.underline {
+    /*text-decoration: underline;*/
+    border-bottom: 2px solid;
+    font-size: 18px
+}
+h4 {
+	font-size: 14px;
+	font-weight: bold
+}
+
+.voffset {
+	margin-bottom: -10px;
+}
+
+.voffset1 {
+	margin-top: 5px;
+}
+
+.voffset2 {
+	margin-top: 10px;
+}
+
+.voffset3 {
+	margin-top: 20px;
+}
+
+.voffset4 {
+		margin-top: 50px;
+}
+
+.voffset5 {
+	margin-bottom: -30px;
+		margin-right: -500px;
+}
+.vnegoffset {
+	   margin-top: -35px;
+	/*margin-right: -340px;*/ 
+		margin-bottom: -25px  
+}
+.vnegoffset1 {
+	margin-top: -20px;
+}
+.vnegoffset2 {
+    margin-top: -40px;
+     margin-right: 0; 
+    margin-bottom: -25px;
+}
+label {
+    color:#111166
+}
+footer {
+	margin-top: 40px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #cecece;
+}
+
+
+#masthead {
+	min-height: 199px;
+	background-color: #000044;
+	color: #aaaacc;
+}
+
+	#masthead h1 {
+		font-size: 55px;
+		line-height: 1;
+		color: #fefeff;
+		margin-top: 50px;
+	}
+
+	#masthead .well {
+		margin-top: 31px;
+		background-color: #111166;
+		border-color: #000022;
+		color: #efefff;
+		min-height: 127px;
+	}
+
+#topPanel {
+	padding-top: 0px;
+	padding-left: 22px;
+	padding-right: 22px;
+}
+
+	#topPanel .panel-body {
+		padding-top: 0px;
+	}
+
+.feature-container {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.navbar.affix {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.top-spacer {
+	background-color: #ffffff;
+	height: 40px;
+	margin-right: 50px;
+	margin-left: 20px;
+}
+
+a, a:hover {
+	color: #223344;
+	text-decoration: none;
+}
+
+.icon-bar {
+	background-color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+	#masthead h1 {
+		font-size: 80px;
+	}
+}
+
+.navbar-bright {
+	background-color: #111166;
+	color: #fff;
+	margin-bottom: 0;
+	border-width: 0;
+}
+
+	.navbar-bright a, .navbar-bright .navbar-brand, #masthead h4 {
+		color: #ccccdd;
+		font-size: 14px;
+		text-transform: uppercase;
+		letter-spacing: .08em;
+	}
+
+	.navbar-bright li > a:hover {
+		background-color: #000044;
+	}
+
+.dropdown-menu {
+	min-width: 250px;
+}
+
+.caret {
+	color: #fff;
+}
+
+.navbar-toggle {
+	color: #fff;
+	border-width: 0;
+}
+
+	.navbar-toggle:hover {
+		background-color: #fff;
+	}
+
+.panel {
+	border-color: transparent;
+	border-radius: 0;
+	margin-right: 50px;
+	margin-left: 20px;
+}
+
+.thumbnail {
+	margin-bottom: 8px;
+}
+
+.img-container {
+	overflow: hidden;
+	height: 170px;
+}
+
+	.img-container img {
+		min-width: 280px;
+		min-height: 180px;
+		max-width: 380px;
+		max-height: 280px;
+	}
+
+.txt-container {
+	overflow: hidden;
+	height: 100px;
+}
+
+.well-lg {
+	padding: 24px;
+	border-radius: 6px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.panel .lead {
+	overflow: hidden;
+	height: 90px;
+}
+
+.label-float {
+	margin: 0 auto;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	opacity: .9;
+	padding: 6px;
+	color: #fff;
+}
+
+.category {
+	display: block;
+	font-size: 0.5em;
+	color: #2980b9;
+}
+
+
+@media (min-width: 1200px) {
+}
+
+@media (min-width: 768px) {
+	.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
+		margin-right: 40px;
+		margin-left: 35px;
+	}
+
+
+	.btn-twitter {
+		background-color: #4099FF;
+		color: #fff;
+	}
+
+	.btn-facebook {
+		background-color: #3B5998;
+		color: #fff;
+	}
+
+	.btn-google-plus {
+		background-color: #d34836;
+		color: #fff;
+	}
+
+	.btn-twitter:hover {
+		background-color: #3088FF;
+		color: #62BBFF;
+	}
+
+	.btn-facebook:hover {
+		background-color: #2A4998;
+		color: #4C6BBA;
+	}
+
+	.btn-google-plus:hover {
+		background-color: #C23836;
+		color: #E45A58;
+	}
+}
+/*Calender Date*/
+.tournaments {
+	list-style: none;
+}
+
+	.tournaments > li {
+		position: relative;
+		margin-bottom: 30px;
+	}
+
+		.tournaments > li .date {
+			background: red;
+			color: white;
+			text-align: center;
+			width: 60px;
+			-ms-border-radius: 8px;
+			border-radius: 8px;
+		}
+
+			.tournaments > li .date .month {
+				text-transform: uppercase;
+				font-size: 14px;
+				font-weight: bold;
+				padding: 2px 6px;
+			}
+
+			.tournaments > li .date .day {
+				background: #f7f7f7;
+				color: #333;
+				font-size: 20px;
+				padding: 6px 12px;
+			}
+
+		.tournaments > li .details {
+			position: absolute;
+			top: 0;
+			left: 70px;
+		}
+
+			.tournaments > li .details .member {
+				font-weight: bold;
+				display: block;
+			}
+
+			.tournaments > li .details .category {
+				font-size: 15px;
+			}
+
+		.tournaments > li .actions {
+			font-size: 15px;
+			display: none;
+		}
+
+		.tournaments > li:hover .actions {
+			display: block;
+		}
+/*Inherited From Last Project. Let's See What Sticks'*/
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-padding {
+	margin-bottom: 50px;
+}
+
+.form-control {
+	font-size: 17px;
+	height: 44px;
+	-ms-border-radius: 9px;
+	border-radius: 9px;
+}
+
+	.form-control:focus {
+		box-shadow: none;
+		transition: none;
+		-webkit-transition: none;
+	}
+
+.btn {
+	margin-right: 4%;
+	border-color: #2980b9;
+	color: #2980b9;
+}
+/* Page-level styles */
+
+.popover-notifications .popover-content {
+	padding: 0;
+}
+
+.popover-notifications ul.notifications {
+	list-style: none;
+	padding-left: 0;
+}
+
+	.popover-notifications ul.notifications > li {
+		border-bottom: 1px solid #ddd;
+		padding: 10px;
+	}
+
+		.popover-notifications ul.notifications > li:last-child {
+			border-bottom: none;
+		}
+
+	.popover-notifications ul.notifications .highlight {
+		font-weight: bold;
+	}
+
+/*#searchTournaments {
+  width: 400px;
+}*/
+#searchTournaments input {
+	max-width: none;
+	font-size: 13px;
+}
+/*Button*/
+.myButton {
+	padding-top: 25px;
+}
+.label {
+	display: inline;
+	padding: .2em .6em .3em;
+	font-size: 75%;
+	margin-left: -15px;
+	text-align: center;
+	font-weight: 700;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: .25em;
+}
+

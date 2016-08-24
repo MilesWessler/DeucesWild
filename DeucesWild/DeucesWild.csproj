@@ -189,9 +189,11 @@
     <Compile Include="Controllers\API\FollowingsController.cs" />
     <Compile Include="Controllers\API\TournamentsController.cs" />
     <Compile Include="Controllers\API\NotificationsController.cs" />
+    <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\FolloweesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyTournamentsController.cs" />
     <Compile Include="Controllers\TournamentsController.cs" />
     <Compile Include="DTO\AttendanceDto.cs" />
     <Compile Include="DTO\FollowingDto.cs" />
@@ -206,14 +208,69 @@
     <Compile Include="Migrations\201607242144551_Initial.Designer.cs">
       <DependentUpon>201607242144551_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608171744345_AddLocation.cs" />
+    <Compile Include="Migrations\201608171744345_AddLocation.Designer.cs">
+      <DependentUpon>201608171744345_AddLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608180135309_AddTournamentName.cs" />
+    <Compile Include="Migrations\201608180135309_AddTournamentName.Designer.cs">
+      <DependentUpon>201608180135309_AddTournamentName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608231703184_AddMyTournaments.cs" />
+    <Compile Include="Migrations\201608231703184_AddMyTournaments.Designer.cs">
+      <DependentUpon>201608231703184_AddMyTournaments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608231733432_Update.cs" />
+    <Compile Include="Migrations\201608231733432_Update.Designer.cs">
+      <DependentUpon>201608231733432_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608231739513_AddPlayerIdToMyTournament.cs" />
+    <Compile Include="Migrations\201608231739513_AddPlayerIdToMyTournament.Designer.cs">
+      <DependentUpon>201608231739513_AddPlayerIdToMyTournament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608232102061_AddAmountWonMyTournament.cs" />
+    <Compile Include="Migrations\201608232102061_AddAmountWonMyTournament.Designer.cs">
+      <DependentUpon>201608232102061_AddAmountWonMyTournament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608232118034_AddBankroll.cs" />
+    <Compile Include="Migrations\201608232118034_AddBankroll.Designer.cs">
+      <DependentUpon>201608232118034_AddBankroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608232130070_AddBankrollToUser.cs" />
+    <Compile Include="Migrations\201608232130070_AddBankrollToUser.Designer.cs">
+      <DependentUpon>201608232130070_AddBankrollToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608232212144_AddBankrollClass.cs" />
+    <Compile Include="Migrations\201608232212144_AddBankrollClass.Designer.cs">
+      <DependentUpon>201608232212144_AddBankrollClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608232224048_IDK.cs" />
+    <Compile Include="Migrations\201608232224048_IDK.Designer.cs">
+      <DependentUpon>201608232224048_IDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608232244542_AddWinLoseToBankroll.cs" />
+    <Compile Include="Migrations\201608232244542_AddWinLoseToBankroll.Designer.cs">
+      <DependentUpon>201608232244542_AddWinLoseToBankroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608232328448_NullBankRollTypes.cs" />
+    <Compile Include="Migrations\201608232328448_NullBankRollTypes.Designer.cs">
+      <DependentUpon>201608232328448_NullBankRollTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608232337248_UpdatedNullTypes.cs" />
+    <Compile Include="Migrations\201608232337248_UpdatedNullTypes.Designer.cs">
+      <DependentUpon>201608232337248_UpdatedNullTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\Bankroll.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Following.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MyTournament.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\Tournament.cs" />
@@ -221,6 +278,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\FutureDate.cs" />
+    <Compile Include="ViewModels\MyTournamentsFormViewModel.cs" />
+    <Compile Include="ViewModels\MyTournamentsViewModel.cs" />
     <Compile Include="ViewModels\TournamentFormViewModel.cs" />
     <Compile Include="ViewModels\TournamentsViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
@@ -228,19 +287,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
-    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\Bootbundle\bootstrap.css" />
+    <Content Include="Content\Bootbundle\bootstrap.min.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\site.css" />
-    <Content Include="Content\site.min.css" />
-    <Content Include="Content\site.rtl.css" />
+    <Content Include="Content\PrepBootStrap\local.css" />
+    <Content Include="fonts\font-awesome.min.css" />
+    <Content Include="Images\hex.png" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Views\Home\index.html" />
+    <Content Include="Content\Bootbundle\site.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\site.css.map" />
-    <Content Include="Content\site.less" />
+    <Content Include="Scripts\bootstrap1.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -255,6 +317,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\underscore-min.js" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Views\MyTournaments\index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -265,7 +328,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Tournaments.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -287,9 +350,21 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Tournaments\TournamentForm.cshtml" />
     <Content Include="Views\Tournaments\Mine.cshtml" />
-    <Content Include="Views\Shared\Tournaments.cshtml" />
+    <Content Include="Views\Shared\Tournaments-backup.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\TournamentsTests\Index.cshtml" />
+    <Content Include="Views\Attendances\Create.cshtml" />
+    <Content Include="Views\Attendances\Delete.cshtml" />
+    <Content Include="Views\Attendances\Details.cshtml" />
+    <Content Include="Views\Attendances\Edit.cshtml" />
+    <Content Include="Views\Attendances\Index.cshtml" />
+    <Content Include="Views\MyTournaments\Create.cshtml" />
+    <Content Include="Views\MyTournaments\Delete.cshtml" />
+    <Content Include="Views\MyTournaments\Details.cshtml" />
+    <Content Include="Views\MyTournaments\Edit.cshtml" />
+    <Content Include="Views\MyTournaments\Index.cshtml" />
+    <Content Include="Views\MyTournaments\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +380,45 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607242144551_Initial.resx">
       <DependentUpon>201607242144551_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608171744345_AddLocation.resx">
+      <DependentUpon>201608171744345_AddLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608180135309_AddTournamentName.resx">
+      <DependentUpon>201608180135309_AddTournamentName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608231703184_AddMyTournaments.resx">
+      <DependentUpon>201608231703184_AddMyTournaments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608231733432_Update.resx">
+      <DependentUpon>201608231733432_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608231739513_AddPlayerIdToMyTournament.resx">
+      <DependentUpon>201608231739513_AddPlayerIdToMyTournament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608232102061_AddAmountWonMyTournament.resx">
+      <DependentUpon>201608232102061_AddAmountWonMyTournament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608232118034_AddBankroll.resx">
+      <DependentUpon>201608232118034_AddBankroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608232130070_AddBankrollToUser.resx">
+      <DependentUpon>201608232130070_AddBankrollToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608232212144_AddBankrollClass.resx">
+      <DependentUpon>201608232212144_AddBankrollClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608232224048_IDK.resx">
+      <DependentUpon>201608232224048_IDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608232244542_AddWinLoseToBankroll.resx">
+      <DependentUpon>201608232244542_AddWinLoseToBankroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608232328448_NullBankRollTypes.resx">
+      <DependentUpon>201608232328448_NullBankRollTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608232337248_UpdatedNullTypes.resx">
+      <DependentUpon>201608232337248_UpdatedNullTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

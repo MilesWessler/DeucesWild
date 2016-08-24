@@ -11,6 +11,9 @@ namespace DeucesWild.Models
         public DbSet<Following> Followings { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<UserNotification> UserNotifications { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<MyTournament> MyTournaments { get; set; }
+        public DbSet<Bankroll> Bankrolls { get; set; }
 
 
 

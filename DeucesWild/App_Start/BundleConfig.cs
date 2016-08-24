@@ -11,7 +11,8 @@ namespace DeucesWild
                        "~/Scripts/jquery-{version}.js",
                        "~/Scripts/underscore-min.js",
                        "~/Scripts/moment.js",
-                       "~/Scripts/bootstrap.js",
+                        //"~/Scripts/bootstrap.js",
+                        "~/Scripts/bootstrap.min.js",
                        "~/Scripts/respond.js",
                        "~/Scripts/bootbox.min.js"));
 
@@ -24,8 +25,8 @@ namespace DeucesWild
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/styles.css",
                       "~/Content/animate.css"));
         }
     }

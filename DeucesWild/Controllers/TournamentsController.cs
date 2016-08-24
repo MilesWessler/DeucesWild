@@ -3,7 +3,9 @@ using DeucesWild.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace DeucesWild.Controllers
@@ -54,8 +56,9 @@ namespace DeucesWild.Controllers
             return View(tournaments);
         }
 
+
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(TournamentFormViewModel model)
         {
             var viewModel = new TournamentFormViewModel()
             {
@@ -69,26 +72,47 @@ namespace DeucesWild.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TournamentFormViewModel viewModel)
+        public ActionResult Create(TournamentFormViewModel viewModel, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
                 viewModel.Categories = _context.Categories.ToList();
+                //viewModel.States = _context.States.ToList();
+
                 return View("TournamentForm", viewModel);
             }
 
-            var tournament = new Tournament
+            byte[] data = GetBytesFromFile(file);
+
+            var tournament = new Tournament()
             {
                 MemberId = User.Identity.GetUserId(),
                 DateTime = viewModel.GetDateTime(),
                 CategoryId = viewModel.Category,
-                Venue = viewModel.Venue
+                Venue = viewModel.Venue,
+                EntryFee = viewModel.EntryFee,
+                Image = data,
+                Location = viewModel.Location
             };
 
             _context.Tournaments.Add(tournament);
             _context.SaveChanges();
 
             return RedirectToAction("Mine", "Tournaments");
+        }
+
+        public byte[] GetBytesFromFile(HttpPostedFileBase file)
+        {
+            using (Stream inputStream = file.InputStream)
+            {
+                MemoryStream memoryStream = inputStream as MemoryStream;
+                if (memoryStream == null)
+                {
+                    memoryStream = new MemoryStream();
+                    inputStream.CopyTo(memoryStream);
+                }
+                return memoryStream.ToArray();
+            }
         }
 
         [Authorize]

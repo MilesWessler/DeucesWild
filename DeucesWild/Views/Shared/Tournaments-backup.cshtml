@@ -1,0 +1,96 @@
+﻿@model DeucesWild.ViewModels.TournamentsViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+<h1>@Model.Heading</h1>
+
+@using (Html.BeginForm("Search", "Tournaments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group top-buffer">
+        <div id="searchTournaments" class="input-group">
+            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by Member, Game or Location..." })
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+        </div>
+    </div>
+    foreach (var tournament in Model.UpcomingTournaments)
+    {
+        if (tournament.Image != null)
+        {
+            string imageBase64 = Convert.ToBase64String(tournament.Image);
+            string imageSrc = $"data:image/gif;base64,{imageBase64}";
+            <figure class="snip1336">
+                <img src="@imageSrc" alt="sample87" />
+                <figcaption>
+                   <h2>@Html.DisplayFor(t => tournament.Venue)</h2>
+                    <h2><span>@tournament.Category.Name</span></h2>
+                    <ul class="remove-list">
+                        <li>
+                            <label>Entry Fee</label>:
+                            @tournament.EntryFee.ToString("C")
+                        </li>
+                        <li>
+                            <label>RSVPs:</label>
+                            @*@Html.DisplayFor(c => c.Count)*@
+                        </li>
+                        <li>
+                            <label>Current Prize Pool:</label>
+                            @*@Html.PrizePoolHelper(Model.Count, tournament.EntryFee)*@
+                        </li>
+                        <li>
+                            <label>Date:</label>
+                            @tournament.DateTime.ToString(" MMMM dd"), 2016
+                        </li>
+                    </ul>
+                    <p>
+                        @tournament.Location.Street
+                        @tournament.Location.City,
+                        @tournament.Location.State
+                        @tournament.Location.ZipCode
+                    </p>
+
+                  c
+                </figcaption>
+            </figure>
+        }
+    }
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { tournamentId: button.attr("data-tournament-id") })
+                    .done(function () {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Reserved");
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+            });
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button.text("Following");
+                    })
+                    .fail(function () {
+                        alert("Something failed");
+                    });
+            });
+        });
+        $(".hover").mouseleave(
+            function () {
+                $(this).removeClass("hover");
+            }
+        );
+    </script>
+
+}

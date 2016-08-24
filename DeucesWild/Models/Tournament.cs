@@ -10,8 +10,15 @@ namespace DeucesWild.Models
     {
         public int Id { get; set; }
         public bool IsCanceled { get; private set; }
-
+        public double EntryFee { get; set; }
+        public double PrizePool { get; set; }
+        public int NumberOfEntries { get; set; }
+        public byte[] Image { get; set; }
+        public int LocationId { get; set; }
+        public string TournamentName { get; set; }
+        public Location Location { get; set; }
         public ApplicationUser Member { get; set; }
+        public IEnumerable<ApplicationUser> PlayersAttending { get; set; }
 
         [Required]
         public string MemberId { get; set; }
@@ -27,7 +34,10 @@ namespace DeucesWild.Models
         [Required]
         public byte CategoryId { get; set; }
 
-        public ICollection<Attendance> Attendances { get; private set; }
+        public double PlayerOfTheYearPoints { get; set; }
+
+
+        public ICollection<Attendance> Attendances { get; set; }
 
         public Tournament()
         {
