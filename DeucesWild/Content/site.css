@@ -1,11 +1,6 @@
 /* override bootstrap styles */
 @import url('http://fonts.googleapis.com/css?family=Oswald:300,400:latin,latin-ext');
-/*form {
-	margin-left: -7%;
-	margin-right: -7%;
-	
-   
-}*/
+
 .navbar-form input, .form-inline input {
 	width: auto;
 }
@@ -19,41 +14,54 @@ body {
 h1, h2, h3, h4 .highlight, .navbar a, #masthead h4 {
 	font-family: 'Oswald',arial narrow,sans-serif;
 }
-li {
-	padding-bottom: 20px
+a {
+	color: #000044; 
 }
+a .hover {
+	color: #000044
+}
+
+li {
+	padding-bottom: 20px;
+}
+
 small, .small {
 	font-size: 85%;
 	font-size: 14px;
 	margin-left: -150px;
 	color: black;
 }
+
 .venue-header {
 	color: purple;
 	text-align: center;
-	padding-bottom: 20px
+	padding-bottom: 20px;
 }
+
 .tournament-header {
 	color: black;
-        margin-bottom: -10px;
-		 text-align: center;
+	margin-bottom: -10px;
+	text-align: center;
 }
-ul
-{
-list-style-type: none;
+
+ul {
+	list-style-type: none;
 }
+
 .underline {
-    /*text-decoration: underline;*/
-    border-bottom: 2px solid;
-    font-size: 18px
+	/*text-decoration: underline;*/
+	border-bottom: 2px solid;
+	font-size: 18px;
 }
+
 h4 {
 	font-size: 14px;
-	font-weight: bold
+	font-weight: bold;
 }
 
 .voffset {
-	margin-bottom: -10px;
+	margin-top: -12px;
+	margin-right: 4px;
 }
 
 .voffset1 {
@@ -69,29 +77,34 @@ h4 {
 }
 
 .voffset4 {
-		margin-top: 50px;
+	margin-top: 50px;
 }
 
 .voffset5 {
 	margin-bottom: -30px;
-		margin-right: -500px;
+	margin-right: -500px;
 }
+
 .vnegoffset {
-	   margin-top: -35px;
-	/*margin-right: -340px;*/ 
-		margin-bottom: -25px  
+	margin-top: -35px;
+	/*margin-right: -340px;*/
+	margin-bottom: -25px;
 }
+
 .vnegoffset1 {
 	margin-top: -20px;
 }
+
 .vnegoffset2 {
-    margin-top: -40px;
-     margin-right: 0; 
-    margin-bottom: -25px;
+	margin-top: -40px;
+	margin-right: 0;
+	margin-bottom: -25px;
 }
+
 label {
-    color:#111166
+	color: #111166;
 }
+
 footer {
 	margin-top: 40px;
 	padding-top: 40px;
@@ -125,10 +138,12 @@ footer {
 	padding-top: 0px;
 	padding-left: 22px;
 	padding-right: 22px;
+   
 }
 
 	#topPanel .panel-body {
 		padding-top: 0px;
+		margin-bottom: 0;
 	}
 
 .feature-container {
@@ -147,7 +162,7 @@ footer {
 
 .top-spacer {
 	background-color: #ffffff;
-	height: 40px;
+	height: 0px;
 	margin-right: 50px;
 	margin-left: 20px;
 }
@@ -202,12 +217,7 @@ a, a:hover {
 		background-color: #fff;
 	}
 
-.panel {
-	border-color: transparent;
-	border-radius: 0;
-	margin-right: 50px;
-	margin-left: 20px;
-}
+
 
 .thumbnail {
 	margin-bottom: 8px;
@@ -237,9 +247,11 @@ a, a:hover {
 	margin-right: 50px;
 }
 
+
 .panel .lead {
 	overflow: hidden;
 	height: 90px;
+	   
 }
 
 .label-float {
@@ -362,7 +374,7 @@ a, a:hover {
 }
 
 .form-padding {
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 .form-control {
@@ -378,10 +390,22 @@ a, a:hover {
 		-webkit-transition: none;
 	}
 
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+	background-color: #cc0000;
+	border-color: #428bca;
+}
+.label-default {
+   background-color: #dadada
+}
+
 .btn {
 	margin-right: 4%;
-	border-color: #2980b9;
-	color: #2980b9;
+	border-color: #000080;
+	color: #000080;
+}
+
+.btn-primary {
+	background-color: #dadada;
 }
 /* Page-level styles */
 
@@ -418,6 +442,7 @@ a, a:hover {
 .myButton {
 	padding-top: 25px;
 }
+
 .label {
 	display: inline;
 	padding: .2em .6em .3em;
@@ -431,5 +456,13 @@ a, a:hover {
 	white-space: nowrap;
 	vertical-align: baseline;
 	border-radius: .25em;
+}
+
+.panel {
+	border-color: transparent;
+	border-radius: 0;
+	margin-right: 50px;
+	margin-left: 20px;
+	margin-bottom: 0;
 }
 

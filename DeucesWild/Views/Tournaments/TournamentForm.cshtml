@@ -3,99 +3,133 @@
     ViewBag.Title = Model.Heading;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>@Model.Heading</h2>
-@using (Html.BeginForm(Model.Action, "Tournaments", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.Id)
-
-
-    <div class="col-md-10 form-padding ">
-        <hr />
-        <h2>Location</h2>
-    </div>
-    <div class="form-group">
-        <div class="col-md-3">
-            <label>Venue</label>
-            @Html.TextBoxFor(m => m.Venue, new { @class = "form-control", @autofocus = "autofocus" })
+<div class="container voffset3">
+    <div class="col-md-12 form-padding">
+        <div align="center" class="col-md-6">
+            <h2>New Tournament Form</h2>
         </div>
     </div>
-        <div class="form-group">
-            <div class="col-md-2 form-padding">
-                <label>State</label>
-                @Html.TextBoxFor(m => m.Location.State, new { @class = "form-control", @autofocus = "autofocus" })
+
+    @using (Html.BeginForm(Model.Action, "Tournaments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="row">
+            <div class="col-md-12 form-padding">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label>Game Type</label>
+                        @Html.DropDownListFor(m => m.Category, new SelectList(Model.Categories, "Id", "Name"), "", new { @class = "form-control" })
+                    </div>
+                </div>
             </div>
+            <div class="col-md-12 form-padding">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label>Venue</label>
+                        @Html.TextBoxFor(m => m.Venue, new { @class = "form-control", @autofocus = "autofocus" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-md-12 form-padding">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label>Street</label>
+                        @Html.TextBoxFor(m => m.Location.Street, new { @class = "form-control", @autofocus = "autofocus" })
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="form-group">
-            <div class="col-md-pull-1 col-md-4 col-md-offset-1  form-padding">
-                <label>City</label>
-                @Html.TextBoxFor(m => m.Location.City, new { @class = "form-control", @autofocus = "autofocus" })
+        <div class="row">
+            <div class="col-md-12 form-padding">
+                <div class="col-md-2">
+                    <label>City</label>
+                    @Html.TextBoxFor(m => m.Location.City, new { @class = "form-control", @autofocus = "autofocus" })
+                </div>
+                <div class="col-md-2">
+                    <label>State</label>
+                    @Html.TextBoxFor(m => m.Location.State, new { @class = "form-control", @autofocus = "autofocus" })
+                </div>
+                <div class="col-md-2">
+                    <label>Zip Code</label>
+                    @Html.TextBoxFor(m => m.Location.ZipCode, new { @class = "form-control", @autofocus = "autofocus" })
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-3 form-padding">
-                <label>Zip Code</label>
-                @Html.TextBoxFor(m => m.Location.ZipCode, new { @class = "form-control", @autofocus = "autofocus" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-4 form-padding">
-                <label>Street</label>
-                @Html.TextBoxFor(m => m.Location.Street, new { @class = "form-control", @autofocus = "autofocus" })
+
+
+        <div class="col-md-2 form-padding">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Date)
+                <div class='input-group date' id='datetimepicker5'>
+                    @Html.TextBoxFor(model => model.Date, new { @class = "form-control datepicker", placeholder = DateTime.Today.ToShortDateString() })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
         </div>
 
-        <div class="col-lg-10 form-padding">
-            <hr />
-            <h2>Details</h2>
-        </div>
-        <div class="form-group">
-            <div class="col-md-3 form-padding">
-                <label>Date</label>
-                @Html.TextBoxFor(m => m.Date, new { @class = "form-control", @autofocus = "autofocus", @placeholder = "eg 1 Jan 2015" })
+        <div class="col-md-2">
+            <label>Start Time</label>
+            <div class="input-group clockpicker">
+                @*<input type="text" class="form-control" value="09:30">*@
+                @Html.TextBoxFor(m => m.Time, new { @class = "form-control", @autofocus = "autofocus", type = "text" })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
             </div>
         </div>
+
+
         <div class="form-group">
-            <div class="col-md-2 form-padding">
-                <label>Time</label>
-                @Html.TextBoxFor(m => m.Time, new { @class = "form-control", @autofocus = "autofocus", @placeholder = "eg 20:00" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-4 form-padding">
+            <div class="col-md-2">
                 <label>Entry Fee</label>
                 @Html.TextBoxFor(m => m.EntryFee, new { @class = "form-control", @autofocus = "autofocus" })
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-5 form-padding">
-                <label>Game Type</label>
-                @Html.DropDownListFor(m => m.Category, new SelectList(Model.Categories, "Id", "Name"), "", new { @class = "form-control" })
-            </div>
-        </div>
 
 
-
-
-        <div class="form-group">
-            <div class="col-md-2 form-padding myButton">
-                <label class="btn btn-primary btn-lg">
-                    <input type="file" id="file" name="file" class="hidden" />
-                    Upload Image
-                </label>
-            </div>
-        </div>
 
         <div class="row">
-            <div class="col-md-10">
-                <button type="submit" class="btn btn-primary btn-lg">Save</button>
+            <div class="col-md-12 form-padding">
+                <div class="col-md-2">
+                    <label class="btn btn-primary btn-sm">
+                        <input type="file" id="file" name="file" class="hidden" />
+                        Upload Image
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary btn-lg"><strong>Save</strong></button>
+                </div>
+
             </div>
         </div>
 
-}
+    }
+</div>
+
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap-clockpicker.css">
+
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function() { // will trigger when the document is ready
+            $('.datepicker').datepicker(); //Initialise any date pickers
+        });
+    </script>
+<script type="text/javascript" src="~/Scripts/bootstrap-clockpicker.min.js"></script>
+<script type="text/javascript">
+    $('.clockpicker').clockpicker();
+</script>
+
 }
+
+

@@ -1,0 +1,23 @@
+﻿@model DeucesWild.Models.Tournament
+
+@{
+    ViewBag.Title = @Html.DisplayFor(m => m.TournamentName);
+}
+<title>@Html.DisplayFor(m => m.TournamentName)</title>
+<h2>Details</h2>
+<br />
+<br />
+<br />
+<br />
+
+<body>
+
+    @{
+        Disqus.Initialize("deuceswildcomments");
+    }
+
+    @Disqus.ShowComments(@Model.Id.ToString())
+
+
+</body>
+

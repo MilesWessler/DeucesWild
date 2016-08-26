@@ -5,6 +5,7 @@ using System;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,6 +19,7 @@ namespace DeucesWild.Controllers
         {
             _context = new ApplicationDbContext();
         }
+
 
         [Authorize]
         public ActionResult Attending()
@@ -54,6 +56,23 @@ namespace DeucesWild.Controllers
                 .ToList();
 
             return View(tournaments);
+        }
+
+        public ActionResult TournamentDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tournament tournament = _context.Tournaments.Find(id);
+            //var att = db.Tournaments.Include(a => a.Attendances).Where(x => x.Id == tournament.Id);
+            //tournament.Attendances = att.FirstOrDefault().Attendances;
+
+            if (tournament == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tournament);
         }
 
 

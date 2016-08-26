@@ -11,7 +11,7 @@ namespace DeucesWild
                        "~/Scripts/jquery-{version}.js",
                        "~/Scripts/underscore-min.js",
                        "~/Scripts/moment.js",
-                        //"~/Scripts/bootstrap.js",
+                        "~/Scripts/bootstrap-datepicker.js",
                         "~/Scripts/bootstrap.min.js",
                        "~/Scripts/respond.js",
                        "~/Scripts/bootbox.min.js"));
@@ -25,8 +25,9 @@ namespace DeucesWild
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.min.css",
                       "~/Content/styles.css",
+                      "~/Content/bootstrap.min.css",
+                     "~/Content/bootstrap-datepicker.css",
                       "~/Content/animate.css"));
         }
     }

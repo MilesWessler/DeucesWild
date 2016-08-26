@@ -18,7 +18,8 @@ namespace DeucesWild.Models
         public string TournamentName { get; set; }
         public Location Location { get; set; }
         public ApplicationUser Member { get; set; }
-        public IEnumerable<ApplicationUser> PlayersAttending { get; set; }
+        public string AttendeeId { get; set; }
+        public IEnumerable<Attendance> Attendee { get; set; }
 
         [Required]
         public string MemberId { get; set; }

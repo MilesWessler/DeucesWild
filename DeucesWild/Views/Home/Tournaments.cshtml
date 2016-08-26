@@ -1,0 +1,207 @@
+﻿@using System.Drawing
+@using DeucesWild.Models
+@model DeucesWild.ViewModels.TournamentsViewModel
+
+<div id="masthead">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>
+                    Tournaments
+                    <p class="lead"></p>
+                </h1>
+            </div>
+            <div class="col-md-5">
+                <div class="well well-lg">
+                    <div class="row voffset3">
+                        <div class="col-sm-12">
+                            <div class="form-group top-buffer">
+                                @using (Html.BeginForm("Search", "Tournaments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <div id="searchTournaments" class="input-group">
+                                        @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by Member, Game or Location..." })
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </span>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="top-spacer"> </div>
+            </div>
+        </div>
+    </div><!-- /cont -->
+
+</div>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    foreach (var tournament in Model.UpcomingTournaments)
+    {
+        if (tournament.Image != null)
+        {
+            string imageBase64 = Convert.ToBase64String(tournament.Image);
+            string imageSrc = $"data:image/gif;base64,{imageBase64}";
+            <div class="container">
+                <div style="height: 20px" class="col-md-12">
+                   
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                       <h4 class="voffset"><span class="label label-default">@Html.ActionLink("View Tournament Details", "TournamentDetails", new {id = tournament.Id})</span></h4><h4>
+                                          </h4>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h2 align="center">@Html.DisplayFor(t => tournament.TournamentName)</h2>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div align="center" class="col-md-4 col-md-offset-4">
+                                            <a class="story-title" href="#"><img alt="" src="@imageSrc" style="width: 150px; height: 150px" class="img-circle"></a>
+                                            <h4>
+                                                <em>
+                                                    @tournament.DateTime.ToString(" MMMM dd"), 2016
+                                                </em>
+                                            </h4>
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-4 col-md-offset-4 venue-header">
+                                                <h3 align="center">@Html.DisplayFor(t => tournament.Venue)</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 ">
+                                            <div class="col-md-2 col-md-offset-9">
+
+                                                @if (tournament.IsCanceled)
+                                                {
+                                                    <span class="label label-warning">Canceled</span>
+                                                }
+
+                                                @if (Model.ShowActions)
+                                                {
+                                                    <button class="btn btn-link btn-lg js-toggle-follow"
+                                                            data-user-id="@tournament.MemberId"
+                                                            style="background-color: grey; color: white;">
+                                                        Follow
+                                                    </button>
+                                                }
+                                            </div>
+                                            <div class="col-md-1">
+
+                                                @if (Model.ShowActions && !tournament.IsCanceled)
+                                                {
+                                                    <button data-tournament-id="@tournament.Id"
+                                                            class="btn btn-default btn-lg pull-right js-toggle-attendance">
+                                                        RSVP
+                                                    </button>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <p class="voffset">
+                                                    @tournament.Location.Street
+                                                    @tournament.Location.City,
+                                                    @tournament.Location.State
+                                                    @tournament.Location.ZipCode
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+
+        }
+    }
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { tournamentId: button.attr() })
+                    .done(function () {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Reserved");
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+            });
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button.text("Following");
+                    })
+                    .fail(function () {
+                        alert("Something failed");
+                    });
+            });
+        });
+        $(".hover").mouseleave(
+            function () {
+                $(this).removeClass("hover");
+            }
+        );
+    </script>
+
+
+    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//san2blog.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><br><br><br>
+
+
+}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+@*<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">*@
+
+
+
+
+
+
+
+
+
+

@@ -30,7 +30,8 @@ namespace DeucesWild.Controllers.Api
             var attendance = new Attendance
             {
                 TournamentId = dto.TournamentId,
-                AttendeeId = userId
+                AttendeeId = userId,
+                Name = User.Identity.Name
             };
             _context.Attendances.Add(attendance);
             _context.SaveChanges();

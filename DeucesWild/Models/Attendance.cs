@@ -15,5 +15,7 @@ namespace DeucesWild.Models
         [Key]
         [Column(Order = 2)]
         public string AttendeeId { get; set; }
+
+        public string Name { get; set; }
     }
 }

@@ -16,11 +16,11 @@ namespace DeucesWild.ViewModels
         public string Venue { get; set; }
 
         [Required]
-        [FutureDate]
+        //[FutureDate]
         public string Date { get; set; }
 
         [Required]
-        [ValidTime]
+        //[ValidTime]
         public string Time { get; set; }
 
         [Required]

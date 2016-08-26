@@ -43,6 +43,7 @@ body {
   color: #333;
   background-color: #fff;
 }
+
 /*.nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
@@ -96,7 +97,13 @@ body {
 	background-color: transparent;
   }*/
 }
-
+.dropdown-menu .divider {
+	color: #dadada;
+}
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+	background-color: red;
+	border-color: #428bca;
+}
 .navbar-bright {
 	background-color: #111166;
 	color: #fff;
@@ -132,12 +139,6 @@ body {
 		background-color: #fff;
 	}
 
-.panel {
-	border-color: transparent;
-	border-radius: 0;
-	margin-right: 0;
-	margin-left: 0
-}
 
 
 /* Nav Announcements */
@@ -224,4 +225,12 @@ table.tablesorter thead tr th:hover {
 	padding-left: 15px !important;
 	padding-right: 15px !important;
   }
+}
+.panel {
+	border-color: transparent;
+	border-radius: 0;
+	margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+
 }

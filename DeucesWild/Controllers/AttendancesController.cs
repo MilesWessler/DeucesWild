@@ -11,9 +11,12 @@ namespace DeucesWild.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Attendances
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var attendances = db.Attendances.Include(a => a.Attendee).Include(a => a.Tournament);
+            var attendances =
+                db.Attendances.Include(a => a.Attendee).Include(a => a.Tournament);
+            attendances = attendances.Where(x => x.TournamentId == id);
+
             return View(attendances.ToList());
         }
 

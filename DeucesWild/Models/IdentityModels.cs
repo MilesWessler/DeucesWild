@@ -14,7 +14,7 @@ namespace DeucesWild.Models
         public DbSet<Location> Locations { get; set; }
         public DbSet<MyTournament> MyTournaments { get; set; }
         public DbSet<Bankroll> Bankrolls { get; set; }
-
+        public DbSet<Comment> Comments { get; set; }
 
 
         public ApplicationDbContext()
